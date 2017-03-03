@@ -6,7 +6,8 @@ var app     = express();
 
 app.get('/scrape', function(req, res){
   // Let's scrape Anchorman 2
-  url = 'http://www.imdb.com/title/tt1229340/';
+  url = 'https://e-ujier.uji.es/pls/www/!gri_ass.lleu_asignatura_g?p_titulacion=225&p_asignatura=EI1053';
+  //url = 'http://www.imdb.com/title/tt1229340/';
 
   request(url, function(error, response, html){
     if(!error){
@@ -15,8 +16,9 @@ app.get('/scrape', function(req, res){
       var title, release, rating;
       var json = { title : "", release : "", rating : ""};
 
-      $('.title_wrapper').filter(function(){
+      $('#navbar').filter(function(){
         var data = $(this);
+        
         title = data.children().first().text().trim();
         release = data.children().last().children().last().text().trim();
 
